@@ -1,0 +1,28 @@
+{
+  "name": "bl-dropdown-ng2",
+  "version": "0.1.6",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jachvadze95/ng-schedule.git"
+  },
+  "author": {
+    "name": "Dachi Jachvadze",
+    "email": "jachvadzedachi@gmail.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jachvadze95/ng-schedule.git/issues"
+  },
+  "main": "bl-dropdown-ng2.umd.js",
+  "module": "bl-dropdown-ng2.js",
+  "jsnext:main": "bl-dropdown-ng2.js",
+  "typings": "bl-dropdown-ng2.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}

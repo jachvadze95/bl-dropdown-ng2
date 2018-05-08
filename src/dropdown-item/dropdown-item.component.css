@@ -1,0 +1,13 @@
+.bl-dropdown-item {
+    padding: 5px 7px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.bl-dropdown-item.placeholder {
+    opacity: .38;
+}
+
+.bl-dropdown-item:not(.bl-dropdown-item-selected):hover {
+    background: #F5F5F5;
+}

@@ -1,0 +1,31 @@
+﻿<div style="position: relative;">
+
+    <fieldset *ngIf="hasFieldset && !isEmpty" [style.minWidth.px]="width + 31">
+        <ng-content select="[fieldset-content]"></ng-content>
+    </fieldset>
+
+    <div [ngClass]="hasFieldset && !isEmpty ? 'bl-dropdown-wrapper-has-fieldset' : 'bl-dropdown-wrapper'" [style.width.px]="hasFieldset ? width : ''"
+         [class.disabled]="disabled">
+        <div class="bl-dropdown-placeholder" *ngIf="placeholder && (!hasFieldset || isEmpty)" [class.bl-dropdown-placeholder-selected]="!isEmpty"
+             [style.top]="setPlaceholderTopPosition()">{{ placeholder }}
+            <span class="required-asterisk" *ngIf="required && isEmpty">*</span>
+        </div>
+        <div class="bl-dropdown-content-editable" contenteditable="true" (blur)="onDropdownBlur()">
+            <div contenteditable="false" class="bl-dropdown" (click)="toggleDropdown()" [class.disabled]="disabled">
+                <input class="bl-dropdown-selected-item" [(ngModel)]="selectedItemText" [title]="selectedItemText" (blur)="onDropdownBlur()"
+                       (keyup)="filterDropdownItems($event)" autocomplete="off" spellcheck="false" />
+                <div class="bl-dropdown-arrows-wrapper">
+                    <div class="bl-dropdown-arrow bl-dropdown-arrow-left-half" [style.backgroundColor]="setArrowColor()" [style.transform]="setArrowLeftSafeTransform()"></div>
+                    <div class="bl-dropdown-arrow bl-dropdown-arrow-right-half" [style.backgroundColor]="setArrowColor()" [style.transform]="setArrowRightSafeTransform()"></div>
+                </div>
+            </div>
+        </div>
+        <div [style.maxHeight.px]="displayItemsList ? 200 : 0" class="bl-dropdown-items-list" [ngStyle]="getItemsListStyles()" (click)="$event.preventDefault();">
+            <bl-dropdown-item-ng2 *ngIf="hasEmptyItem" value="" [text]="placeholder ? placeholder : 'None'" (select)="dropdownItemSelect()"
+                                  [isPlaceholder]="true"></bl-dropdown-item-ng2>
+            <bl-dropdown-item-ng2 *ngFor="let item of filteredDropdownItems" [value]="item.value" [text]="item.text" [selected]="item.selected"
+                                  (select)="dropdownItemSelect($event)"></bl-dropdown-item-ng2>
+        </div>
+    </div>
+
+</div>
